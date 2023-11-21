@@ -52,6 +52,6 @@ public class FileService {
     }
 
     private String getRecord() {
-       return "Record №" + getNumOfCurrentRecord() + ": " + java.time.LocalDateTime.now();
+       return "Record " + getNumOfCurrentRecord() + ": " + java.time.LocalDateTime.now();
     }
 }
