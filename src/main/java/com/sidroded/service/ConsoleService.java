@@ -34,6 +34,6 @@ public class ConsoleService {
     }
 
     private String getCommitCommand() {
-        return "git commit -m \"Automated commit for record №" + fileService.getNumOfCurrentRecord() + "\"";
+        return "git commit -m \"Automated commit for record №" + (fileService.getNumOfCurrentRecord() - 1) + "\"";
     }
 }
