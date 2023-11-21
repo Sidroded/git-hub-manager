@@ -9,7 +9,7 @@ public class ConsoleService {
     private static final Logger log = LoggerFactory.getLogger(ConsoleService.class);
     private static final String addCommand = "git add .";
     private static final String pushCommand = "git push";
-    private static final FileService fileService = new FileService();
+    private final FileService fileService = new FileService();
 
     public void gitCommit() {
         try {
