@@ -14,11 +14,13 @@ public class ConsoleService {
     public void gitCommit() {
         try {
             Process addProcess = Runtime.getRuntime().exec(addCommand);
-            log.info("{} complete", addProcess.info());
+            int addExitCode = addProcess.waitFor();
+            log.info("git add complete with exit code: {}", addExitCode);
 
             Process commitProcess = Runtime.getRuntime().exec(getCommitCommand());
-            log.info("{} complete", commitProcess.info());
-        } catch (IOException e) {
+            int commitExitCode = commitProcess.waitFor();
+            log.info("git commit complete with exit code: {}", commitExitCode);
+        } catch (IOException | InterruptedException e) {
 
             e.printStackTrace();
         }
@@ -27,8 +29,9 @@ public class ConsoleService {
     public void gitPush() {
         try {
             Process pushProcess = Runtime.getRuntime().exec(pushCommand);
-            log.info("{} complete", pushProcess.info());
-        } catch (IOException e) {
+            int pushExitCode = pushProcess.waitFor();
+            log.info("git push complete with exit code: {}", pushExitCode);
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
