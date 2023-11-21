@@ -1,6 +1,7 @@
 package com.sidroded.service;
 
 import java.io.*;
+import java.util.Scanner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,22 @@ public class FileService {
         }
     }
 
+    public int getNumOfCurrentRecord() {
+        int currentNum = 0;
+
+        try (FileReader reader = new FileReader(fileName); Scanner scanner = new Scanner(reader)) {
+            while (scanner.hasNextLine()) {
+                scanner.nextLine();
+                currentNum++;
+            }
+        } catch (IOException e) {
+            log.error("Problem with '{}'.", fileName);
+        }
+
+        return ++currentNum;
+    }
+
     private String getRecord() {
-       return "Record: " + java.time.LocalDateTime.now();
+       return "Record №" + getNumOfCurrentRecord() + ": " + java.time.LocalDateTime.now();
     }
 }
