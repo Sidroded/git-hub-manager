@@ -18,6 +18,6 @@ public class Main {
             fileService.updateFile();
             consoleService.gitCommit();
             consoleService.gitPush();
-        }, 0, 1, TimeUnit.MINUTES);
+        }, 0, 5, TimeUnit.MINUTES);
     }
 }
